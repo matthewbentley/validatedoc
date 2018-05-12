@@ -68,7 +68,10 @@ def _print_err(start: str, thing: Any, text: str) -> None:
         info = ([], 0)
     file = inspect.getsourcefile(thing)
 
-    print("%s: %s:%s:%s - %s" % (start, file, thing.__name__, info[1], text))
+    print(
+        "%s: %s:%s:%s - %s" % (start, file, thing.__name__, info[1], text),
+        file=sys.stderr,
+    )
 
 
 def print_warning(thing: Any, text: str) -> None:
@@ -312,13 +315,16 @@ def validate(filename: str) -> bool:
     """
     module_name = inspect.getmodulename(filename)
     if module_name is None:
-        print("Could not determine module name for %s" % filename)
+        print(
+            "Could not determine module name for %s" % filename,
+            file=sys.stderr,
+        )
         return True
     spec = importlib.util.spec_from_file_location(module_name, filename)
     module = importlib.util.module_from_spec(spec)
     loader = spec.loader
     if loader is None:
-        print("Could not load module for %s" % filename)
+        print("Could not load module for %s" % filename, file=sys.stderr)
         return True
     loader.exec_module(module)
     sys.modules[module.__name__] = module
@@ -335,10 +341,8 @@ def main() -> None:
 
     res = [validate(f) for f in files]
     if not any(res):
-        print("No errors found")
         exit(0)
     else:
-        print("Errors found")
         exit(1)
 
 
