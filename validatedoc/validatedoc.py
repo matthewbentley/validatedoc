@@ -1,12 +1,17 @@
 #!/usr/bin/env python
 """Validate doc strings, more strictly than pep 257."""
-import sys
-import re
-import inspect
 import importlib.util
-from types import ModuleType, FunctionType, MethodType
-from typing import Optional, Tuple, Any, Callable
+import inspect
+import re
+import sys
+from types import FunctionType
+from types import MethodType
+from types import ModuleType
+from typing import Any
+from typing import Callable
 from typing import Dict  # noqa
+from typing import Optional
+from typing import Tuple
 
 
 re_match = re.compile(":.*: .*")
