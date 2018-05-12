@@ -1,0 +1,5 @@
+- id: validatedoc
+  name: validatedoc
+  entry: validatedoc
+  language: python
+  file: \.py$
