@@ -4,5 +4,6 @@ python:
     - "3.6"
 env:
     - TOXENV=mypy,lint
+install: pip install tox
 script:
     - tox
