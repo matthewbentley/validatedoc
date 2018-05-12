@@ -329,9 +329,9 @@ def validate(filename: str) -> bool:
 def main() -> None:
     """Run the main program."""
     if len(sys.argv) == 1:
-        print("Usage: %s file1,file2,..." % sys.argv[0])
+        print("Usage: %s file1 file2 ..." % sys.argv[0])
         exit(1)
-    files = sys.argv[1].split(',')
+    files = sys.argv[1:]
 
     res = [validate(f) for f in files]
     if not any(res):
