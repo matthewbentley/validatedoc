@@ -12,7 +12,7 @@ setup(
     description="Do some doc string validateion",
     entry_points={
         'console_scripts': [
-            'validatedoc = validatedoc.validatadoc:main',
+            'validatedoc = validatedoc.validatedoc:main',
         ],
     },
     install_requires=[],
