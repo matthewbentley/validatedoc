@@ -175,7 +175,7 @@ def validate_function(fun: Callable[..., Any], module: ModuleType) -> bool:
         docstring.pop(0)
 
     for line in docstring:
-        if line:
+        if line and not line.startswith('    '):
             print_err(
                 fun,
                 "Cannot have text after the return documentation",
@@ -206,7 +206,7 @@ def validate_function(fun: Callable[..., Any], module: ModuleType) -> bool:
             "Function return not annotated",
         )
         err = True
-    if (ret_ann is None or ret_ann is signature.empty) and ret_exists:
+    if ret_ann is None and ret_exists:
         print_err(
             fun,
             "Function returns None but return was annotated",
