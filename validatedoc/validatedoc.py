@@ -17,7 +17,7 @@ from typing import Tuple
 re_match = re.compile(":.*: .*")
 re_param = re.compile(":param (?P<name>[a-zA-Z0-9_]*): (?P<text>.*)")
 re_return = re.compile(":return: (?P<text>.*)")
-re_raises = re.compile(":raises (?P<name>[a-zA-Z0-9_]*): (?P<text>.*)")
+re_raises = re.compile(":raises (?P<name>[a-zA-Z0-9_\.]*): (?P<text>.*)")
 
 
 def get_param(line: str) -> Optional[Tuple[str, str]]:
