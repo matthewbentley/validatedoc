@@ -34,6 +34,8 @@ Specifically, it ensures that:
     space indent (to continue the previous line)
 - The params match exactly the arguments
 - Return docstrings are last
+- If the function is annotated to return None, no return should be present
+- If the function specifies a return other than none, return is present
 
 In the future, I also want to:
 - [ ] Verify that any exceptions raised in the function have a raises docstring
