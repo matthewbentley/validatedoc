@@ -326,7 +326,11 @@ def validate(filename: str) -> bool:
     if loader is None:
         print("Could not load module for %s" % filename, file=sys.stderr)
         return True
-    loader.exec_module(module)
+    try:
+        loader.exec_module(module)
+    except SystemExit:
+        # some script SystemExit on import
+        pass
     sys.modules[module.__name__] = module
 
     return validate_module(module, module)
