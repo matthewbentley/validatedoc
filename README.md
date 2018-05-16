@@ -7,7 +7,21 @@ should look like.
 I recommend using this with pydocstyle, which velidates pep257.  This is more
 strict and more opinionated than that.
 
-Example:
+Installing
+---
+```
+pip install validatedoc
+```
+
+Usage
+---
+```
+validatedoc file1.py dir/file2.py file2.py
+```
+
+More info
+---
+Example of how it expects docs to be formated:
 
 ```
 def foo(bar, baz, qux) -> zam:
