@@ -328,8 +328,9 @@ def validate(filename: str) -> bool:
         return True
     try:
         loader.exec_module(module)
-    except SystemExit:
+    except (SystemExit, ImportError):
         # some script SystemExit on import
+        # Also just pass if we can't import something
         pass
     sys.modules[module.__name__] = module
 
